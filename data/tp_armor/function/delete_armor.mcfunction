@@ -1,0 +1,11 @@
+execute if score @s tp.id matches 0..9 run function tp_armor:delete {"storage":"tp.inv.armor.0.9"}
+execute if score @s tp.id matches 10..19 run function tp_armor:delete {"storage":"tp.inv.armor.10.19"}
+execute if score @s tp.id matches 20..29 run function tp_armor:delete {"storage":"tp.inv.armor.20.29"}
+execute if score @s tp.id matches 30..39 run function tp_armor:delete {"storage":"tp.inv.armor.30.39"}
+execute if score @s tp.id matches 40..49 run function tp_armor:delete {"storage":"tp.inv.armor.40.49"}
+execute if score @s tp.id matches 50..59 run function tp_armor:delete {"storage":"tp.inv.armor.50.59"}
+execute if score @s tp.id matches 60..69 run function tp_armor:delete {"storage":"tp.inv.armor.60.69"}
+execute if score @s tp.id matches 70..79 run function tp_armor:delete {"storage":"tp.inv.armor.70.79"}
+execute if score @s tp.id matches 80..89 run function tp_armor:delete {"storage":"tp.inv.armor.80.89"}
+execute if score @s tp.id matches 90..99 run function tp_armor:delete {"storage":"tp.inv.armor.90.99"}
+execute if score @s tp.id matches 100.. run function tp_armor:delete {"storage":"tp.inv.armor.100"}
