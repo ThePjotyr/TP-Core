@@ -6,7 +6,7 @@ $data modify storage $(storage) NewPlayer.armor[2] set from entity @s Inventory.
 $data modify storage $(storage) NewPlayer.armor[3] set from entity @s Inventory.[{Slot:103b}]
 $execute store result storage $(storage) NewPlayer.ID int 1 run scoreboard players get @s tp.id
 
-$data modify storage $(storage) Players insert 0 from storage $(storage) NewPlayer
+$data modify storage $(storage) Players append from storage $(storage) NewPlayer
 $data remove storage $(storage) NewPlayer
 
 tag @s add tp.inv.armor.stored

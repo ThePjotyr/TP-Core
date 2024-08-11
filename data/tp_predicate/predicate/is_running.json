@@ -1,0 +1,30 @@
+{
+  "condition": "minecraft:any_of",
+  "terms": [
+    {
+      "condition": "minecraft:entity_properties",
+      "entity": "this",
+      "predicate": {
+        "type": "minecraft:player",
+        "type_specific": {
+          "type": "player"
+        },
+        "flags": {
+          "is_sneaking": false,
+          "is_sprinting": true,
+          "is_swimming": false
+        }
+      }
+    },
+    {
+      "condition": "minecraft:entity_scores",
+      "entity": "this",
+      "scores": {
+        "tp.lag.running": {
+          "min": 1,
+          "max": 20
+        }
+      }
+    }
+  ]
+}
