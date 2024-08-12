@@ -1,5 +1,6 @@
 #SCOREBOARDS
 scoreboard objectives add tp.id dummy
+scoreboard objectives add tp.running.lag dummy
 scoreboard objectives add tp.height dummy
 scoreboard objectives add tp.rotation.y dummy
 

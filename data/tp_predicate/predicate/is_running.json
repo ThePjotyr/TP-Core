@@ -20,7 +20,7 @@
       "condition": "minecraft:entity_scores",
       "entity": "this",
       "scores": {
-        "tp.lag.running": {
+        "tp.running.lag": {
           "min": 1,
           "max": 20
         }
