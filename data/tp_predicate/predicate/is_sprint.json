@@ -1,0 +1,15 @@
+{
+    "condition": "minecraft:entity_properties",
+    "entity": "this",
+    "predicate": {
+      "type": "minecraft:player",
+      "type_specific": {
+        "type": "player"
+      },
+      "flags": {
+        "is_sneaking": false,
+        "is_sprinting": true,
+        "is_swimming": false
+      }
+    }
+  }
