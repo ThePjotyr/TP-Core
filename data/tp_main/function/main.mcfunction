@@ -1,5 +1,5 @@
 #PLAYER ID
-execute as @a unless score @s tp.id matches -2147483648..2147483647 run function main:id_set
+execute as @a unless score @s tp.id matches -2147483648..2147483647 run function tp_main:id_set
 
 #PLAYER RUNNING LAG
 execute as @a unless score @s tp.running.lag matches -2147483648..2147483647 run scoreboard players set @s tp.running.lag 20
