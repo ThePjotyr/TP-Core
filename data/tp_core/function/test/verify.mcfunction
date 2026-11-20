@@ -66,4 +66,8 @@ execute unless score #t.t_on tp_core.tmp matches 1 run scoreboard players set #t
 execute unless score #t.t_on tp_core.tmp matches 1 run say [tp_core test] FAIL track enable
 execute unless score #t.t_off tp_core.tmp matches 0 run scoreboard players set #t.fail tp_core.tmp 1
 execute unless score #t.t_off tp_core.tmp matches 0 run say [tp_core test] FAIL track disable
+execute if entity @e[type=item,tag=tp_core_t_vanilla] run scoreboard players set #t.fail tp_core.tmp 1
+execute if entity @e[type=item,tag=tp_core_t_vanilla] run say [tp_core test] FAIL vanilla drop of the base block was not removed
+execute unless entity @e[type=item,tag=tp_core_t_custom] run scoreboard players set #t.fail tp_core.tmp 1
+execute unless entity @e[type=item,tag=tp_core_t_custom] run say [tp_core test] FAIL a custom item next to the block was removed
 execute if score #t.fail tp_core.tmp matches 0 run say [tp_core test] PASS
