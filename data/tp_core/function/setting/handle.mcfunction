@@ -1,3 +1,4 @@
+execute if score #debug tp_core.tmp matches 1 run tellraw @s "[tp_core] advancement fired: setting"
 # Reward of event/setting: /trigger tp_core.setting set N. 1 = open the menu; 100+2*i+v = set registered setting i to v.
 advancement revoke @s only tp_core:event/setting
 scoreboard players set #s.two tp_core.tmp 2

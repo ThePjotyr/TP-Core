@@ -1,3 +1,4 @@
+execute if score #debug tp_core.tmp matches 1 run tellraw @s "[tp_core] advancement fired: item_use"
 # Reward of event/item_use: runs every tick a custom item is being used; only the first tick of a press dispatches.
 advancement revoke @s only tp_core:event/item_use
 scoreboard players add @s tp_core.use_t 0

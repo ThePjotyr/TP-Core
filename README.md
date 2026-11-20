@@ -39,3 +39,6 @@ No resource pack is required. To give an item or block a custom look later, add 
 - Item "use" = right-click, detected through `using_item` with a long non-consuming `consumable` (+ `use_effects` so sprinting is not slowed). Hold-right-click fires once per press.
 - `track` costs one engine-side predicate per opted-in player until the event fires; nothing in mcfunction.
 - The old 1.21 pack (`tp_main`, `tp_armor`, `tp_predicate`, `tp_tags`) is gone; `half_blocks` was a typo for `half_block`.
+
+## Trying it by hand
+`/function tp_core:debug/on` prints every framework event to the player who triggered it (player events, item advancements and dispatches, settings, track edges); `debug/off` stops it. `tp_core:test/register` (in `#tp_core:register`) registers `tp_core:item/test_wand` (right-click prints a message) and `tp_core:item/test_block` (stone-based block), so `/function tp_core:item/give {id:"tp_core:item/test_wand"}` works after any `/reload`. Remove that tag entry to ship without them.

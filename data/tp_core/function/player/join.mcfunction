@@ -1,3 +1,4 @@
+execute if score #debug tp_core.tmp matches 1 run tellraw @s "[tp_core] event player/join"
 # The advancement re-arms by revoke; the engine evaluates it only until it fires.
 scoreboard players set @s tp_core.leave 0
 scoreboard players enable @s tp_core.setting
