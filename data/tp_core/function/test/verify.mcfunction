@@ -70,4 +70,12 @@ execute if entity @e[type=item,tag=tp_core_t_vanilla] run scoreboard players set
 execute if entity @e[type=item,tag=tp_core_t_vanilla] run say [tp_core test] FAIL vanilla drop of the base block was not removed
 execute unless entity @e[type=item,tag=tp_core_t_custom] run scoreboard players set #t.fail tp_core.tmp 1
 execute unless entity @e[type=item,tag=tp_core_t_custom] run say [tp_core test] FAIL a custom item next to the block was removed
+execute unless score #t.p_g1 tp_core.tmp matches 0 run scoreboard players set #t.fail tp_core.tmp 1
+execute unless score #t.p_g1 tp_core.tmp matches 0 run say [tp_core test] FAIL pushed glass copy was not removed
+execute unless score #t.p_g2 tp_core.tmp matches 0 run scoreboard players set #t.fail tp_core.tmp 1
+execute unless score #t.p_g2 tp_core.tmp matches 0 run say [tp_core test] FAIL pulled glass copy was not removed
+execute unless score #t.p_items tp_core.tmp matches 2 run scoreboard players set #t.fail tp_core.tmp 1
+execute unless score #t.p_items tp_core.tmp matches 2 run say [tp_core test] FAIL piston tests: expected 2 custom items (see #t.p_items)
+execute unless score #t.p_break tp_core.tmp matches 2 run scoreboard players set #t.fail tp_core.tmp 1
+execute unless score #t.p_break tp_core.tmp matches 2 run say [tp_core test] FAIL piston tests: on_break count
 execute if score #t.fail tp_core.tmp matches 0 run say [tp_core test] PASS
