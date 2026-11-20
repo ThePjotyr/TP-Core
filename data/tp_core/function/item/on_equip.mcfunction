@@ -1,3 +1,5 @@
+execute if score #debug tp_core.tmp matches 1 if data entity @s equipment run function tp_core:debug/log {msg:"equip check: equipment NBT present"}
+execute if score #debug tp_core.tmp matches 1 unless data entity @s equipment run function tp_core:debug/log {msg:"equip check: NO equipment NBT on this entity"}
 # Reward of event/item_equip (any inventory change): fires on_equip once per newly worn custom item.
 advancement revoke @s only tp_core:event/item_equip
 execute store result storage tp_core:item eq.pid int 1 run scoreboard players get @s tp_core.id

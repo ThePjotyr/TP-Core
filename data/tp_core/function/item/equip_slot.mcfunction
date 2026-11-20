@@ -1,6 +1,7 @@
 # Macro: pid, slot. Compares the custom item id in the slot with the remembered one (storage tp_core:worn).
 data modify storage tp_core:item new set value ""
 $data modify storage tp_core:item new set from entity @s equipment.$(slot).components."minecraft:custom_data".tp_core.id
+$execute if score #debug tp_core.tmp matches 1 unless data storage tp_core:item {new:""} run function tp_core:debug/log {msg:"equip slot $(slot) holds a tp_core item"}
 $execute store success score #i.changed tp_core.tmp run data modify storage tp_core:worn p$(pid).$(slot) set from storage tp_core:item new
 execute if score #i.changed tp_core.tmp matches 0 run return 0
 execute if data storage tp_core:item {new:""} run return 0
