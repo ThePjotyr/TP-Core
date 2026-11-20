@@ -23,11 +23,16 @@ data modify storage tp_core:meta version set value "2.0.0"
 data modify storage tp_core:loops list set value []
 data modify storage tp_core:registry items set value {}
 data modify storage tp_core:registry blocks set value {}
-data modify storage tp_core:registry settings set value {list:[],by_id:{}}
+data modify storage tp_core:registry settings set value {list:[],by_id:{},packs:{},pack_list:[]}
+data modify storage tp_core:setting errors set value []
+# TP-Core's own settings: a global debug switch (value in storage tp_core:global, survives reloads).
+function tp_core:setting/pack {id:"tp_core",name:"TP-Core"}
+function tp_core:setting/register {pack:"tp_core",id:"tp_core:debug",label:"Debug mode",default:0,scope:"global"}
 function tp_core:loop/register {name:"block",fn:"tp_core:block/check",interval:10,type:"item_display"}
 function tp_core:loop/register {name:"block_fast",fn:"tp_core:block/check",interval:1,type:"item_display"}
 function #tp_core:register
 function #tp_core:event/load
+function tp_core:debug/sync
 
 scoreboard players enable @a tp_core.setting
 

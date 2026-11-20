@@ -44,12 +44,44 @@ execute unless score #t.s_a2 tp_core.tmp matches 0 run scoreboard players set #t
 execute unless score #t.s_a2 tp_core.tmp matches 0 run say [tp_core test] FAIL setting a after trigger 100
 execute unless score #t.s_b2 tp_core.tmp matches 1 run scoreboard players set #t.fail tp_core.tmp 1
 execute unless score #t.s_b2 tp_core.tmp matches 1 run say [tp_core test] FAIL setting b after trigger 103
-execute unless data storage tp_core:setting changed{id:"tp_core:test_b",value:1} run scoreboard players set #t.fail tp_core.tmp 1
-execute unless data storage tp_core:setting changed{id:"tp_core:test_b",value:1} run say [tp_core test] FAIL setting changed payload
-execute unless data storage tp_core:setting dlg.actions[0].action{command:"trigger tp_core.setting set 101"} run scoreboard players set #t.fail tp_core.tmp 1
-execute unless data storage tp_core:setting dlg.actions[0].action{command:"trigger tp_core.setting set 101"} run say [tp_core test] FAIL setting menu action 0
-execute unless data storage tp_core:setting dlg.actions[1].action{command:"trigger tp_core.setting set 102"} run scoreboard players set #t.fail tp_core.tmp 1
-execute unless data storage tp_core:setting dlg.actions[1].action{command:"trigger tp_core.setting set 102"} run say [tp_core test] FAIL setting menu action 1
+execute unless score #t.chg tp_core.tmp matches 1 run scoreboard players set #t.fail tp_core.tmp 1
+execute unless score #t.chg tp_core.tmp matches 1 run say [tp_core test] FAIL setting changed payload
+execute unless score #t.m0 tp_core.tmp matches 1 run scoreboard players set #t.fail tp_core.tmp 1
+execute unless score #t.m0 tp_core.tmp matches 1 run say [tp_core test] FAIL pack menu action test_a
+execute unless score #t.m1 tp_core.tmp matches 1 run scoreboard players set #t.fail tp_core.tmp 1
+execute unless score #t.m1 tp_core.tmp matches 1 run say [tp_core test] FAIL pack menu action test_b
+execute unless score #t.m2 tp_core.tmp matches 1 run scoreboard players set #t.fail tp_core.tmp 1
+execute unless score #t.m2 tp_core.tmp matches 1 run say [tp_core test] FAIL pack menu action global test_g
+execute unless score #t.m3 tp_core.tmp matches 1 run scoreboard players set #t.fail tp_core.tmp 1
+execute unless score #t.m3 tp_core.tmp matches 1 run say [tp_core test] FAIL pack menu has extra buttons
+execute unless score #t.s_g tp_core.tmp matches 1 run scoreboard players set #t.fail tp_core.tmp 1
+execute unless score #t.s_g tp_core.tmp matches 1 run say [tp_core test] FAIL global default test_g
+execute unless score #t.s_g2 tp_core.tmp matches 0 run scoreboard players set #t.fail tp_core.tmp 1
+execute unless score #t.s_g2 tp_core.tmp matches 0 run say [tp_core test] FAIL global gset test_g
+execute unless score #t.dbg1 tp_core.tmp matches 1 run scoreboard players set #t.fail tp_core.tmp 1
+execute unless score #t.dbg1 tp_core.tmp matches 1 run say [tp_core test] FAIL gset debug not stored
+execute unless score #t.dbg1f tp_core.tmp matches 1 run scoreboard players set #t.fail tp_core.tmp 1
+execute unless score #t.dbg1f tp_core.tmp matches 1 run say [tp_core test] FAIL debug flag not mirrored on
+execute unless score #t.dbg2 tp_core.tmp matches 1 run scoreboard players set #t.fail tp_core.tmp 1
+execute unless score #t.dbg2 tp_core.tmp matches 1 run say [tp_core test] FAIL trigger changed a global setting
+execute unless score #t.dbg3 tp_core.tmp matches 0 run scoreboard players set #t.fail tp_core.tmp 1
+execute unless score #t.dbg3 tp_core.tmp matches 0 run say [tp_core test] FAIL gset debug off not stored
+execute unless score #t.dbg3f tp_core.tmp matches 0 run scoreboard players set #t.fail tp_core.tmp 1
+execute unless score #t.dbg3f tp_core.tmp matches 0 run say [tp_core test] FAIL debug flag not mirrored off
+execute unless score #t.r0 tp_core.tmp matches 1 run scoreboard players set #t.fail tp_core.tmp 1
+execute unless score #t.r0 tp_core.tmp matches 1 run say [tp_core test] FAIL root menu pack 0 button
+execute unless score #t.r1 tp_core.tmp matches 1 run scoreboard players set #t.fail tp_core.tmp 1
+execute unless score #t.r1 tp_core.tmp matches 1 run say [tp_core test] FAIL root menu pack 1 button
+execute unless score #t.t1 tp_core.tmp matches 1 run scoreboard players set #t.fail tp_core.tmp 1
+execute unless score #t.t1 tp_core.tmp matches 1 run say [tp_core test] FAIL trigger 11 did not open pack 1 menu
+execute unless score #t.t0 tp_core.tmp matches 1 run scoreboard players set #t.fail tp_core.tmp 1
+execute unless score #t.t0 tp_core.tmp matches 1 run say [tp_core test] FAIL trigger 10 did not open pack 0 menu
+execute unless data storage tp_core:setting errors[5] run scoreboard players set #t.fail tp_core.tmp 1
+execute unless data storage tp_core:setting errors[5] run say [tp_core test] FAIL rejected settings calls (expected 6 errors)
+execute if data storage tp_core:setting errors[6] run scoreboard players set #t.fail tp_core.tmp 1
+execute if data storage tp_core:setting errors[6] run say [tp_core test] FAIL too many settings errors
+execute if data storage tp_core:registry settings.by_id."tp_core:bad1" run scoreboard players set #t.fail tp_core.tmp 1
+execute if data storage tp_core:registry settings.by_id."tp_core:bad1" run say [tp_core test] FAIL invalid setting was registered
 execute unless score #t.e_tag tp_core.tmp matches 1 run scoreboard players set #t.fail tp_core.tmp 1
 execute unless score #t.e_tag tp_core.tmp matches 1 run say [tp_core test] FAIL equipment stored tag not set / not cleared after restore
 execute unless score #t.e_clear tp_core.tmp matches 1 run scoreboard players set #t.fail tp_core.tmp 1
