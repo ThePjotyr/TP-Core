@@ -14,7 +14,7 @@ Append your function ids to these tags (in your own pack, `replace: false`):
 | `#tp_core:register` | every load/`/reload`: call `item/register`, `block/register`, `setting/register`, `loop/register` here |
 | `#tp_core:event/load` | after registration on every load |
 | `#tp_core:event/player/{first_join,join,respawn,changed_dimension}` | player events (as the player) |
-| `#tp_core:event/player/<what>_start` | `track` edges: `sprint`, `sneak`, `slot0`…`slot8` |
+| `#tp_core:event/player/<what>_start` and `_end` | `track` edges: `sprint`, `sneak`, `slot0`…`slot8` (end = the state stopped; it re-arms the next start by itself) |
 | `#tp_core:event/item/{use,consume,place,equip}` | any custom item event (as the player; id in `storage tp_core:item cur.id`) |
 | `#tp_core:event/setting/changed` | a setting changed (`storage tp_core:setting changed {id,value}`) |
 
@@ -29,7 +29,7 @@ Macro functions take their arguments as a compound, e.g. `function tp_core:queue
 | Blocks | `block/register {id,base,on_place,on_break,on_tick}`: also registers the item. A placed item becomes `base` plus an `item_display`; breaking the base block fires `on_break` and drops the item. `base` must not be in `#tp_core:passable`. |
 | Settings | `setting/register {id,label,default}` (on/off), `setting/get {id}` (returns 0/1), `setting/set {id,value}`. Players change them from the pause screen → *Settings*, or `/trigger tp_core.setting set N` |
 | Equipment | `equipment/save`, `clear`, `restore` (as the player); tag `tp_core.equipment.stored` while a save exists |
-| Track | `track/enable {what}`, `track/disable {what}`, `track/rearm {what}` (opt-in sprint/sneak/hotbar-slot start events) |
+| Track | `track/enable {what}`, `track/disable {what}`, `track/rearm {what}` (opt-in sprint/sneak/hotbar-slot start and end events; `rearm` only forces a reset) |
 | Utils | `ray/cast {range,step,fn}` (fn stops it with `scoreboard players set #r.stop tp_core.tmp 1`), block tags `#tp_core:{air,passable,liquid,carpets,slabs,stairs,half_block,dig,transparent}`, predicates `tp_core:chance/{5,10,20,50}` (percent) |
 
 ## Resource packs
