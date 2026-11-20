@@ -41,7 +41,7 @@ function tp_core:setting/register {pack:"my_pack",id:"my_pack:hard_mode",label:"
 ```
 - **player**: one value per player (stored by `tp_core.id`), changed by that player in the menu or with `/trigger tp_core.setting set N`.
 - **global**: one value per world, changed only by operators (the menu button runs a `function` command, which vanilla limits to operators; the trigger cannot touch them, and `setting/gset` can be called from any pack function).
-- Menu: pause screen → *Pack settings* → *Open settings* lists every registered pack; each pack has its own page with its toggles. `(operators)` marks global ones. Trigger values: `1` root, `10+k` page of pack k, `100+2*i+v` set player setting i to v.
+- Menu: pause screen → *TP-Core pack settings* → *Open TP-Core settings* lists every registered pack; each pack has its own page with its toggles. `(operators)` marks global ones. Trigger values: `1` root, `10+k` page of pack k, `100+2*i+v` set player setting i to v.
 - Validation: an unknown pack, duplicate id, `default` not 0/1 or `scope` not `player`/`global` is rejected: red chat line, the text is appended to `storage tp_core:setting errors`, nothing registered. `set`/`gset` reject unregistered ids, the wrong scope and values other than 0/1 the same way. Texts (`label`, `name`) must not contain double quotes. Pack ids are plain ids (`my_pack`, not `my_pack:x`); setting ids are `namespace:name`.
 - Global values live in `storage tp_core:global settings`, per-player ones in `tp_core:players`, both survive `/reload`; settings are re-registered every load.
 - TP-Core registers its own pack with one global setting, **`tp_core:debug`** (Debug mode).

@@ -1,12 +1,12 @@
 {
   "type": "minecraft:notice",
-  "title": "Settings",
-  "external_title": "Pack settings",
+  "title": "TP-Core settings",
+  "external_title": "TP-Core pack settings",
   "pause": false,
   "after_action": "none",
-  "body": { "type": "minecraft:plain_message", "contents": "Change the options of the installed packs." },
+  "body": { "type": "minecraft:plain_message", "contents": "Change the options of the installed TP-Core packs." },
   "action": {
-    "label": "Open settings",
+    "label": "Open TP-Core settings",
     "action": { "type": "minecraft:run_command", "command": "trigger tp_core.setting set 1" }
   }
 }

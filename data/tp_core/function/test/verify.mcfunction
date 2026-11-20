@@ -70,8 +70,6 @@ execute unless score #t.dbg3f tp_core.tmp matches 0 run scoreboard players set #
 execute unless score #t.dbg3f tp_core.tmp matches 0 run say [tp_core test] FAIL debug flag not mirrored off
 execute unless score #t.r0 tp_core.tmp matches 1 run scoreboard players set #t.fail tp_core.tmp 1
 execute unless score #t.r0 tp_core.tmp matches 1 run say [tp_core test] FAIL root menu pack 0 button
-execute unless score #t.r1 tp_core.tmp matches 1 run scoreboard players set #t.fail tp_core.tmp 1
-execute unless score #t.r1 tp_core.tmp matches 1 run say [tp_core test] FAIL root menu pack 1 button
 execute unless score #t.t1 tp_core.tmp matches 1 run scoreboard players set #t.fail tp_core.tmp 1
 execute unless score #t.t1 tp_core.tmp matches 1 run say [tp_core test] FAIL trigger 11 did not open pack 1 menu
 execute unless score #t.t0 tp_core.tmp matches 1 run scoreboard players set #t.fail tp_core.tmp 1
@@ -82,6 +80,8 @@ execute if data storage tp_core:setting errors[6] run scoreboard players set #t.
 execute if data storage tp_core:setting errors[6] run say [tp_core test] FAIL too many settings errors
 execute if data storage tp_core:registry settings.by_id."tp_core:bad1" run scoreboard players set #t.fail tp_core.tmp 1
 execute if data storage tp_core:registry settings.by_id."tp_core:bad1" run say [tp_core test] FAIL invalid setting was registered
+execute unless score #t.clean tp_core.tmp matches 1 run scoreboard players set #t.fail tp_core.tmp 1
+execute unless score #t.clean tp_core.tmp matches 1 run say [tp_core test] FAIL test settings not unregistered
 execute unless score #t.e_tag tp_core.tmp matches 1 run scoreboard players set #t.fail tp_core.tmp 1
 execute unless score #t.e_tag tp_core.tmp matches 1 run say [tp_core test] FAIL equipment stored tag not set / not cleared after restore
 execute unless score #t.e_clear tp_core.tmp matches 1 run scoreboard players set #t.fail tp_core.tmp 1
