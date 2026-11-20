@@ -1,8 +1,9 @@
 # Macro: id. As the new display: show the custom item (RP hook: item_model in the item's loot table), join the block loop.
 $loot replace entity @s contents loot $(id)
 tag @s add tp_core.block
-# Slightly larger than the base block so its faces do not z-fight with the base block's.
-data modify entity @s transformation.scale set value [1.002f,1.002f,1.002f]
+# Slightly larger than the base block (no z-fighting), full brightness (inside an opaque block a display would render dark).
+data modify entity @s transformation.scale set value [1.001f,1.001f,1.001f]
+data modify entity @s brightness set value {sky:15,block:15}
 function tp_core:loop/join {loop:"block"}
 scoreboard players add #b.count tp_core.tmp 1
 function tp_core:block/watchdog_start
