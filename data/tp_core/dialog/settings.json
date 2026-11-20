@@ -2,6 +2,8 @@
   "type": "minecraft:notice",
   "title": "Settings",
   "external_title": "Pack settings",
+  "pause": false,
+  "after_action": "none",
   "body": { "type": "minecraft:plain_message", "contents": "Change the options of the installed packs." },
   "action": {
     "label": "Open settings",
