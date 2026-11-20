@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:notice",
+  "title": "Settings",
+  "external_title": "Pack settings",
+  "body": { "type": "minecraft:plain_message", "contents": "Change the options of the installed packs." },
+  "action": {
+    "label": "Open settings",
+    "action": { "type": "minecraft:run_command", "command": "trigger tp_core.setting set 1" }
+  }
+}

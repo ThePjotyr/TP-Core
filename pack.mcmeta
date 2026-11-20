@@ -1,6 +1,7 @@
 {
-    "pack": {
-      "pack_format": 48,
-      "description": "TP-Core is a library necessary for Data Packs made by ThePjotyr"
-    }
+  "pack": {
+    "description": "TP-Core 2.0 - event-driven framework for custom items, blocks and abilities (Minecraft 26.3)",
+    "min_format": 121,
+    "max_format": 121
   }
+}

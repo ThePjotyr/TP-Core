@@ -1,0 +1,3 @@
+# Macro: slot, id, count, components. Builds the item through an inline loot table (keeps every component).
+$execute if items entity @s armor.$(slot) * run return run loot give @s loot {type:"minecraft:generic",pools:[{rolls:1,entries:[{type:"minecraft:item",name:"$(id)",modifier:[{type:"minecraft:set_components",components:$(components)},{type:"minecraft:set_count",count:$(count)}]}]}]}
+$loot replace entity @s armor.$(slot) loot {type:"minecraft:generic",pools:[{rolls:1,entries:[{type:"minecraft:item",name:"$(id)",modifier:[{type:"minecraft:set_components",components:$(components)},{type:"minecraft:set_count",count:$(count)}]}]}]}

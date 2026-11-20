@@ -1,5 +1,3 @@
 {
-    "values": [
-        "tp_main:load"
-    ]
+  "values": ["tp_core:load"]
 }

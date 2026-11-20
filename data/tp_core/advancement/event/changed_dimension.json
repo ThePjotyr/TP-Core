@@ -1,0 +1,6 @@
+{
+  "criteria": {
+    "changed": { "trigger": "minecraft:changed_dimension" }
+  },
+  "rewards": { "function": "tp_core:player/changed_dimension" }
+}

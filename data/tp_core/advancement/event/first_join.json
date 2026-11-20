@@ -1,0 +1,18 @@
+{
+  "criteria": {
+    "no_id": {
+      "trigger": "minecraft:tick",
+      "conditions": {
+        "player": {
+          "type": "minecraft:inverted",
+          "term": {
+            "type": "minecraft:entity_scores",
+            "entity": "this",
+            "scores": { "tp_core.id": { "min": 0 } }
+          }
+        }
+      }
+    }
+  },
+  "rewards": { "function": "tp_core:player/first_join" }
+}

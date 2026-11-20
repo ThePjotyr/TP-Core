@@ -1,0 +1,8 @@
+{
+  "criteria": {
+    "c": {
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "rewards": { "function": "tp_core:item/on_equip" }
+}

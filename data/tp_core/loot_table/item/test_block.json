@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:generic",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:stone",
+          "modifier": {
+            "type": "minecraft:set_components",
+            "components": {
+              "minecraft:custom_data": { "tp_core": { "id": "tp_core:item/test_block" } },
+              "minecraft:item_name": "Test Block"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

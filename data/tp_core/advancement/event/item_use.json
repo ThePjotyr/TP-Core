@@ -1,0 +1,11 @@
+{
+  "criteria": {
+    "c": {
+      "trigger": "minecraft:using_item",
+      "conditions": {
+        "item": { "predicates": { "minecraft:custom_data": "{tp_core:{}}" } }
+      }
+    }
+  },
+  "rewards": { "function": "tp_core:item/on_use" }
+}
