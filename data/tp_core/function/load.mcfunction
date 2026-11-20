@@ -25,6 +25,7 @@ data modify storage tp_core:registry items set value {}
 data modify storage tp_core:registry blocks set value {}
 data modify storage tp_core:registry settings set value {list:[],by_id:{}}
 function tp_core:loop/register {name:"block",fn:"tp_core:block/check",interval:10,type:"item_display"}
+function tp_core:loop/register {name:"block_fast",fn:"tp_core:block/check",interval:1,type:"item_display"}
 function #tp_core:register
 function #tp_core:event/load
 

@@ -1,41 +1,54 @@
-# Macro: base. As the display whose base block is gone. Handles a block moved by a directly adjacent piston:
-# returns 1 while a piston is still moving (check again next poll); otherwise removes the moved copy (no drop) and returns 0.
-# shortcut: chains (a pushed block pushing the custom block) and a custom block pushed by a piston not adjacent to it are not detected.
-execute if block ~ ~ ~ minecraft:moving_piston run return 1
-# push north: piston_head at the old cell, moved copy one cell ahead
-execute if block ~ ~ ~ minecraft:piston_head[facing=north] if block ~ ~ ~-1 minecraft:moving_piston run return 1
+# Macro: base. As the display whose base block is gone (pistons:1 blocks only). Returns 1 while a piston is moving nearby (check again next tick),
+# otherwise removes the copy a directly adjacent piston/sticky piston moved (no drop) and returns 0.
+# shortcut: chains (a pushed block pushing the custom block) and pistons not adjacent to the block are not detected.
+# A moving_piston within 2 cells (on an axis) means a push/pull is in progress: remember it (tag) and wait.
+execute if block ~ ~ ~ minecraft:moving_piston run return run function tp_core:block/piston_wait
+execute if block ~1 ~ ~ minecraft:moving_piston run return run function tp_core:block/piston_wait
+execute if block ~-1 ~ ~ minecraft:moving_piston run return run function tp_core:block/piston_wait
+execute if block ~ ~1 ~ minecraft:moving_piston run return run function tp_core:block/piston_wait
+execute if block ~ ~-1 ~ minecraft:moving_piston run return run function tp_core:block/piston_wait
+execute if block ~ ~ ~1 minecraft:moving_piston run return run function tp_core:block/piston_wait
+execute if block ~ ~ ~-1 minecraft:moving_piston run return run function tp_core:block/piston_wait
+execute if block ~2 ~ ~ minecraft:moving_piston run return run function tp_core:block/piston_wait
+execute if block ~-2 ~ ~ minecraft:moving_piston run return run function tp_core:block/piston_wait
+execute if block ~ ~2 ~ minecraft:moving_piston run return run function tp_core:block/piston_wait
+execute if block ~ ~-2 ~ minecraft:moving_piston run return run function tp_core:block/piston_wait
+execute if block ~ ~ ~2 minecraft:moving_piston run return run function tp_core:block/piston_wait
+execute if block ~ ~ ~-2 minecraft:moving_piston run return run function tp_core:block/piston_wait
+# north: piston head still out at the old cell, moved copy one cell ahead
 $execute if block ~ ~ ~ minecraft:piston_head[facing=north] if block ~ ~ ~-1 $(base) run setblock ~ ~ ~-1 minecraft:air
-# sticky pull north: copy pulled one cell back toward the piston two cells away
-execute if block ~ ~ ~1 minecraft:moving_piston if block ~ ~ ~2 minecraft:sticky_piston[facing=north] run return 1
+# north: sticky piston pulled the copy one cell back toward it
 $execute if block ~ ~ ~2 minecraft:sticky_piston[facing=north,extended=false] if block ~ ~ ~1 $(base) run setblock ~ ~ ~1 minecraft:air
-# push south: piston_head at the old cell, moved copy one cell ahead
-execute if block ~ ~ ~ minecraft:piston_head[facing=south] if block ~ ~ ~1 minecraft:moving_piston run return 1
+# north: piston already retracted after pushing the copy one cell ahead (only after a piston was seen moving)
+$execute if entity @s[tag=tp_core.pmoved] if block ~ ~ ~1 #tp_core:pistons[facing=north] if block ~ ~ ~-1 $(base) run setblock ~ ~ ~-1 minecraft:air
+# south: piston head still out at the old cell, moved copy one cell ahead
 $execute if block ~ ~ ~ minecraft:piston_head[facing=south] if block ~ ~ ~1 $(base) run setblock ~ ~ ~1 minecraft:air
-# sticky pull south: copy pulled one cell back toward the piston two cells away
-execute if block ~ ~ ~-1 minecraft:moving_piston if block ~ ~ ~-2 minecraft:sticky_piston[facing=south] run return 1
+# south: sticky piston pulled the copy one cell back toward it
 $execute if block ~ ~ ~-2 minecraft:sticky_piston[facing=south,extended=false] if block ~ ~ ~-1 $(base) run setblock ~ ~ ~-1 minecraft:air
-# push east: piston_head at the old cell, moved copy one cell ahead
-execute if block ~ ~ ~ minecraft:piston_head[facing=east] if block ~1 ~ ~ minecraft:moving_piston run return 1
+# south: piston already retracted after pushing the copy one cell ahead (only after a piston was seen moving)
+$execute if entity @s[tag=tp_core.pmoved] if block ~ ~ ~-1 #tp_core:pistons[facing=south] if block ~ ~ ~1 $(base) run setblock ~ ~ ~1 minecraft:air
+# east: piston head still out at the old cell, moved copy one cell ahead
 $execute if block ~ ~ ~ minecraft:piston_head[facing=east] if block ~1 ~ ~ $(base) run setblock ~1 ~ ~ minecraft:air
-# sticky pull east: copy pulled one cell back toward the piston two cells away
-execute if block ~-1 ~ ~ minecraft:moving_piston if block ~-2 ~ ~ minecraft:sticky_piston[facing=east] run return 1
+# east: sticky piston pulled the copy one cell back toward it
 $execute if block ~-2 ~ ~ minecraft:sticky_piston[facing=east,extended=false] if block ~-1 ~ ~ $(base) run setblock ~-1 ~ ~ minecraft:air
-# push west: piston_head at the old cell, moved copy one cell ahead
-execute if block ~ ~ ~ minecraft:piston_head[facing=west] if block ~-1 ~ ~ minecraft:moving_piston run return 1
+# east: piston already retracted after pushing the copy one cell ahead (only after a piston was seen moving)
+$execute if entity @s[tag=tp_core.pmoved] if block ~-1 ~ ~ #tp_core:pistons[facing=east] if block ~1 ~ ~ $(base) run setblock ~1 ~ ~ minecraft:air
+# west: piston head still out at the old cell, moved copy one cell ahead
 $execute if block ~ ~ ~ minecraft:piston_head[facing=west] if block ~-1 ~ ~ $(base) run setblock ~-1 ~ ~ minecraft:air
-# sticky pull west: copy pulled one cell back toward the piston two cells away
-execute if block ~1 ~ ~ minecraft:moving_piston if block ~2 ~ ~ minecraft:sticky_piston[facing=west] run return 1
+# west: sticky piston pulled the copy one cell back toward it
 $execute if block ~2 ~ ~ minecraft:sticky_piston[facing=west,extended=false] if block ~1 ~ ~ $(base) run setblock ~1 ~ ~ minecraft:air
-# push up: piston_head at the old cell, moved copy one cell ahead
-execute if block ~ ~ ~ minecraft:piston_head[facing=up] if block ~ ~1 ~ minecraft:moving_piston run return 1
+# west: piston already retracted after pushing the copy one cell ahead (only after a piston was seen moving)
+$execute if entity @s[tag=tp_core.pmoved] if block ~1 ~ ~ #tp_core:pistons[facing=west] if block ~-1 ~ ~ $(base) run setblock ~-1 ~ ~ minecraft:air
+# up: piston head still out at the old cell, moved copy one cell ahead
 $execute if block ~ ~ ~ minecraft:piston_head[facing=up] if block ~ ~1 ~ $(base) run setblock ~ ~1 ~ minecraft:air
-# sticky pull up: copy pulled one cell back toward the piston two cells away
-execute if block ~ ~-1 ~ minecraft:moving_piston if block ~ ~-2 ~ minecraft:sticky_piston[facing=up] run return 1
+# up: sticky piston pulled the copy one cell back toward it
 $execute if block ~ ~-2 ~ minecraft:sticky_piston[facing=up,extended=false] if block ~ ~-1 ~ $(base) run setblock ~ ~-1 ~ minecraft:air
-# push down: piston_head at the old cell, moved copy one cell ahead
-execute if block ~ ~ ~ minecraft:piston_head[facing=down] if block ~ ~-1 ~ minecraft:moving_piston run return 1
+# up: piston already retracted after pushing the copy one cell ahead (only after a piston was seen moving)
+$execute if entity @s[tag=tp_core.pmoved] if block ~ ~-1 ~ #tp_core:pistons[facing=up] if block ~ ~1 ~ $(base) run setblock ~ ~1 ~ minecraft:air
+# down: piston head still out at the old cell, moved copy one cell ahead
 $execute if block ~ ~ ~ minecraft:piston_head[facing=down] if block ~ ~-1 ~ $(base) run setblock ~ ~-1 ~ minecraft:air
-# sticky pull down: copy pulled one cell back toward the piston two cells away
-execute if block ~ ~1 ~ minecraft:moving_piston if block ~ ~2 ~ minecraft:sticky_piston[facing=down] run return 1
+# down: sticky piston pulled the copy one cell back toward it
 $execute if block ~ ~2 ~ minecraft:sticky_piston[facing=down,extended=false] if block ~ ~1 ~ $(base) run setblock ~ ~1 ~ minecraft:air
+# down: piston already retracted after pushing the copy one cell ahead (only after a piston was seen moving)
+$execute if entity @s[tag=tp_core.pmoved] if block ~ ~1 ~ #tp_core:pistons[facing=down] if block ~ ~-1 ~ $(base) run setblock ~ ~-1 ~ minecraft:air
 return 0

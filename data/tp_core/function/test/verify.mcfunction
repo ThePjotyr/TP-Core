@@ -74,8 +74,10 @@ execute unless score #t.p_g1 tp_core.tmp matches 0 run scoreboard players set #t
 execute unless score #t.p_g1 tp_core.tmp matches 0 run say [tp_core test] FAIL pushed glass copy was not removed
 execute unless score #t.p_g2 tp_core.tmp matches 0 run scoreboard players set #t.fail tp_core.tmp 1
 execute unless score #t.p_g2 tp_core.tmp matches 0 run say [tp_core test] FAIL pulled glass copy was not removed
-execute unless score #t.p_items tp_core.tmp matches 2 run scoreboard players set #t.fail tp_core.tmp 1
-execute unless score #t.p_items tp_core.tmp matches 2 run say [tp_core test] FAIL piston tests: expected 2 custom items (see #t.p_items)
-execute unless score #t.p_break tp_core.tmp matches 2 run scoreboard players set #t.fail tp_core.tmp 1
-execute unless score #t.p_break tp_core.tmp matches 2 run say [tp_core test] FAIL piston tests: on_break count
+execute unless score #t.p_items tp_core.tmp matches 3 run scoreboard players set #t.fail tp_core.tmp 1
+execute unless score #t.p_items tp_core.tmp matches 3 run say [tp_core test] FAIL piston tests: expected 3 custom items (see #t.p_items)
+execute unless score #t.p_break tp_core.tmp matches 3 run scoreboard players set #t.fail tp_core.tmp 1
+execute unless score #t.p_break tp_core.tmp matches 3 run say [tp_core test] FAIL piston tests: on_break count
+execute unless score #t.p_g4 tp_core.tmp matches 0 run scoreboard players set #t.fail tp_core.tmp 1
+execute unless score #t.p_g4 tp_core.tmp matches 0 run say [tp_core test] FAIL quick piston left the moved glass behind
 execute if score #t.fail tp_core.tmp matches 0 run say [tp_core test] PASS

@@ -10,3 +10,9 @@ execute in minecraft:overworld run setblock 0 100 18 minecraft:redstone_block
 execute in minecraft:overworld run setblock 5 100 19 minecraft:sticky_piston[facing=south]
 execute in minecraft:overworld run setblock 5 100 18 minecraft:redstone_block
 function tp_core:queue/after {delay:12,fn:"tp_core:test/push_pull"}
+# quick: non-sticky piston (10,100,19), glass + display at z=20; the redstone block is removed one tick after it is placed
+execute in minecraft:overworld run setblock 10 100 19 minecraft:piston[facing=south]
+execute in minecraft:overworld run setblock 10 100 20 minecraft:glass
+execute in minecraft:overworld positioned 10.5 100.5 20.5 run function tp_core:block/spawn with storage tp_core:block p
+execute in minecraft:overworld run setblock 10 100 18 minecraft:redstone_block
+function tp_core:queue/after {delay:1,fn:"tp_core:test/push_quick_off"}
